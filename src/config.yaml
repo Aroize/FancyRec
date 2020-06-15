@@ -1,0 +1,68 @@
+item2vec_dataset:
+ item_count: 67508
+ window_size: 5
+ neg_sample: 5
+ 
+item2vec_model:
+ item_count: 67508
+ embed_dim: 100
+ gru_out: 50
+ slope: 0.2
+ hidden_size: 64
+ 
+gmf:
+ item_count: 89729
+ user_count: 15495
+ gmf_dim: 10
+ 
+mlp:
+ item_count: 89729
+ user_count: 15495
+ layer_count: 4
+ mlp_dim: 16
+ slope: 0.35
+ dropout: 0.2
+ 
+neu_mf:
+ item_count: 89729
+ user_count: 15495
+ user_features: 4
+ gmf_dim: 10
+ layer_count: 4
+ mlp_dim: 16
+ slope: 0.35
+ dropout: 0.2
+ alpha: 0.5
+ 
+train_gmf:
+ train: 'gmf_train_loss'
+ test: 'gmf_test_loss'
+ ndcg: 'gmf_ndcg_metrics'
+ hr: 'gmf_hit_rate_metrics'
+ top_k: 20
+ item_count: 89729
+ save_path: '../model_checkpoints/NCF/GMF'
+ epochs: 20
+ evaluate: False
+ 
+train_mlp:
+ train: 'mlp_train_loss'
+ test: 'mlp_test_loss'
+ ndcg: 'mlp_ndcg_metrics'
+ hr: 'mlp_hit_rate_metrics'
+ top_k: 20
+ item_count: 89729
+ save_path: '../model_checkpoints/NCF/MLP'
+ epochs: 20
+ evaluate: False
+
+train_neu:
+ train: 'neu_train_loss'
+ test: 'neu_test_loss'
+ ndcg: 'neu_ndcg_metrics'
+ hr: 'neu_hit_rate_metrics'
+ top_k: 20
+ item_count: 89729
+ save_path: '../model_checkpoints/NCF/NEU'
+ epochs: 20
+ evaluate: True
